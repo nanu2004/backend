@@ -1,17 +1,17 @@
-const express = require('express');
+import express from "express";
+import { productsRoutes } from "./routes/productsRoutes.js";
 const app = express();
-const port = 5001;
+const port = 3000;
 
-// Import the routes from the products module
-const products_routes = require('./routes/products');
+app.use(express.json());
 
 // Define a root route
-app.get('/', (req, res) => {
-  res.send('hello');
+app.get("/", (req, res) => {
+  res.send("hello");
 });
 
-// Use the imported routes with a specified prefix ("/api/products")
-app.use('/api/products', products_routes);
+// Routes
+app.use("/app", productsRoutes);
 
 // Start the server
 app.listen(port, () => {
